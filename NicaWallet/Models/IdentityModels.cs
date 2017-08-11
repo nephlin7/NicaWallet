@@ -3,7 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-
+using NicaWallet.Models;
 namespace NicaWallet.Models
 {
     // Puede agregar datos del perfil del usuario agregando más propiedades a la clase ApplicationUser. Para más información, visite http://go.microsoft.com/fwlink/?LinkID=317594.
@@ -20,6 +20,12 @@ namespace NicaWallet.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Account> Account { get; set; }
+        public DbSet<AccountType> AccountType { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<Currency> Currency { get; set; }
+        public DbSet<Record> Record { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -27,6 +33,7 @@ namespace NicaWallet.Models
 
         public static ApplicationDbContext Create()
         {
+
             return new ApplicationDbContext();
         }
     }
