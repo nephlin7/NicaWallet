@@ -19,12 +19,7 @@ namespace NicaWallet.Models
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public DbSet<Account> Account { get; set; }
-        public DbSet<AccountType> AccountType { get; set; }
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Currency> Currency { get; set; }
-        public DbSet<Record> Record { get; set; }
+    {        
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
