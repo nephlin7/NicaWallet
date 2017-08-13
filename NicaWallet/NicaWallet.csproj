@@ -171,29 +171,20 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DAL\NicaWalletContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708092319403_Initialize.cs" />
-    <Compile Include="Migrations\201708092319403_Initialize.Designer.cs">
-      <DependentUpon>201708092319403_Initialize.cs</DependentUpon>
+    <Compile Include="Migrations\201708131839370_InitialDatabaseCreation.cs" />
+    <Compile Include="Migrations\201708131839370_InitialDatabaseCreation.Designer.cs">
+      <DependentUpon>201708131839370_InitialDatabaseCreation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708111530261_AddAppClass.cs" />
-    <Compile Include="Migrations\201708111530261_AddAppClass.Designer.cs">
-      <DependentUpon>201708111530261_AddAppClass.cs</DependentUpon>
+    <Compile Include="Migrations\201708131840257_other_models.cs" />
+    <Compile Include="Migrations\201708131840257_other_models.Designer.cs">
+      <DependentUpon>201708131840257_other_models.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708111545432_AppModel.cs" />
-    <Compile Include="Migrations\201708111545432_AppModel.Designer.cs">
-      <DependentUpon>201708111545432_AppModel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708111554022_UpdateLastMigration.cs" />
-    <Compile Include="Migrations\201708111554022_UpdateLastMigration.Designer.cs">
-      <DependentUpon>201708111554022_UpdateLastMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708111616455_updateCategoryClass.cs" />
-    <Compile Include="Migrations\201708111616455_updateCategoryClass.Designer.cs">
-      <DependentUpon>201708111616455_updateCategoryClass.cs</DependentUpon>
+    <Compile Include="Migrations\201708131849553_accomt_applicationuser.cs" />
+    <Compile Include="Migrations\201708131849553_accomt_applicationuser.Designer.cs">
+      <DependentUpon>201708131849553_accomt_applicationuser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -464,20 +455,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708092319403_Initialize.resx">
-      <DependentUpon>201708092319403_Initialize.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708131839370_InitialDatabaseCreation.resx">
+      <DependentUpon>201708131839370_InitialDatabaseCreation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708111530261_AddAppClass.resx">
-      <DependentUpon>201708111530261_AddAppClass.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708131840257_other_models.resx">
+      <DependentUpon>201708131840257_other_models.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708111545432_AppModel.resx">
-      <DependentUpon>201708111545432_AppModel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708111554022_UpdateLastMigration.resx">
-      <DependentUpon>201708111554022_UpdateLastMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708111616455_updateCategoryClass.resx">
-      <DependentUpon>201708111616455_updateCategoryClass.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708131849553_accomt_applicationuser.resx">
+      <DependentUpon>201708131849553_accomt_applicationuser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

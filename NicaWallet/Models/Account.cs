@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
+
 namespace NicaWallet.Models
 {
     [Table("Account")]
@@ -29,6 +30,10 @@ namespace NicaWallet.Models
 
         [ForeignKey("AccountTypeId")]
         public virtual AccountType AccountType { get; set; }
+
+        
+        public virtual ApplicationUser User { get; set; }
+
         #endregion
     }
 }

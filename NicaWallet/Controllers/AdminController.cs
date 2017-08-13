@@ -5,14 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using NicaWallet.Models;
 using System.Data.Entity;
-using NicaWallet.DAL;
 
 namespace NicaWallet.Controllers
 {
     public class AdminController : Controller
     {
-        private NicaWalletContext dbContext = new NicaWalletContext();
-        // GET: Admin
+        private ApplicationDbContext dbContext = new ApplicationDbContext();
+        //GET: Admin
         public ActionResult Category()
         {
             var listCategory = dbContext.Category.ToList();
@@ -47,6 +46,7 @@ namespace NicaWallet.Controllers
             {
                 return Json(new { ResponseCode = "203" });
             }
+            //User.Identity.AuthenticationType
         }
         [HttpPost]
         public ActionResult DeleteCategory(int categoryId)
