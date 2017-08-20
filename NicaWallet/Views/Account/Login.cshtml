@@ -1,63 +1,61 @@
-﻿@using NicaWallet.Models
+@using NicaWallet.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Iniciar sesión";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
 }
 
-<h2>@ViewBag.Title.</h2>
-<div class="row">
-    <div class="col-md-8">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <h4>Use una cuenta local para iniciar sesión.</h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+<section class="login-section">
+    <div class="container">
+        <div class="row">
+            <div class="login-wrapper">
+                <div class="login-inner">
+
+                    <div class="logo">
+                        <img src="~/NicaWallet2.png" alt="logo" />
                     </div>
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Username" })
                         </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Iniciar sesión" class="btn btn-default" />
-                    </div>
-                </div>
-                <p>
-                    @Html.ActionLink("Registrar como nuevo usuario", "Register")
-                </p>
-                @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
-                    <p>
-                        @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                    </p>*@
-            }
-        </section>
-    </div>
-    <div class="col-md-4">
-        <section id="socialLoginForm">
-            @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
-        </section>
-    </div>
-</div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="pull-left">
+                                <div class="checkbox primary">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+
+                            <div class="pull-right">
+                                <a href="reset-password.html" class="a-link">
+                                    <i class="fa fa-unlock-alt"></i>
+                                    @Html.ActionLink("Forgot password?", "ForgotPassword")
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Login" class="btn btn-primary btn-block">
+                        </div>
+
+                        <div class="form-group text-center">                            
+                            Don't have an account?@Html.ActionLink(" Sign Up", "Register")
+                        </div>
+                    }
+
+                    <div class="copy-text">
+                        <p class="m-0"> &copy; NicaWallet</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
