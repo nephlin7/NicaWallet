@@ -17,6 +17,7 @@ namespace NicaWallet.Models
         public DateTime? CreatedDate { get; set; }
         public DateTime? LastUpdate { get; set; }
         public bool? IsActive { get; set; }
+        public string UserId { get; set; }
 
         #region FOREINGKEYS
         [Display(Name = "Currency")]
@@ -32,7 +33,7 @@ namespace NicaWallet.Models
         public virtual AccountType AccountType { get; set; }
 
         
-        public virtual ApplicationUser User { get; set; }
+        //public virtual ApplicationUser User { get; set; }
 
         #endregion
     }

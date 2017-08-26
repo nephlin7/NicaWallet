@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -174,17 +175,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201708131839370_InitialDatabaseCreation.cs" />
-    <Compile Include="Migrations\201708131839370_InitialDatabaseCreation.Designer.cs">
-      <DependentUpon>201708131839370_InitialDatabaseCreation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708131840257_other_models.cs" />
-    <Compile Include="Migrations\201708131840257_other_models.Designer.cs">
-      <DependentUpon>201708131840257_other_models.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201708131849553_accomt_applicationuser.cs" />
-    <Compile Include="Migrations\201708131849553_accomt_applicationuser.Designer.cs">
-      <DependentUpon>201708131849553_accomt_applicationuser.cs</DependentUpon>
+    <Compile Include="Migrations\201708260434435_Update models.cs" />
+    <Compile Include="Migrations\201708260434435_Update models.Designer.cs">
+      <DependentUpon>201708260434435_Update models.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -371,6 +364,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="NicaWallet.png" />
+    <Content Include="NicaWallet2.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="assets\css\icons\font-awesome\fonts\fontawesome-webfont5b62.eot" />
@@ -442,6 +437,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Category.cshtml" />
+    <Content Include="Views\Shared\_LayoutAccount.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -455,14 +451,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708131839370_InitialDatabaseCreation.resx">
-      <DependentUpon>201708131839370_InitialDatabaseCreation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708131840257_other_models.resx">
-      <DependentUpon>201708131840257_other_models.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201708131849553_accomt_applicationuser.resx">
-      <DependentUpon>201708131849553_accomt_applicationuser.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708260434435_Update models.resx">
+      <DependentUpon>201708260434435_Update models.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

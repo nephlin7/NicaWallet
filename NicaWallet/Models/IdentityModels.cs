@@ -16,7 +16,7 @@ namespace NicaWallet.Models
         public int Phone { get; set; }
         public System.DateTime BirthDate { get; set; }
 
-        public virtual ICollection<Account> Accounts { get; set; }
+        //public virtual ICollection<Account> Accounts { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
