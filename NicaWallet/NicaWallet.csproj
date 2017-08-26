@@ -179,6 +179,10 @@
     <Compile Include="Migrations\201708260434435_Update models.Designer.cs">
       <DependentUpon>201708260434435_Update models.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708260526001_Update identity user.cs" />
+    <Compile Include="Migrations\201708260526001_Update identity user.Designer.cs">
+      <DependentUpon>201708260526001_Update identity user.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountType.cs" />
@@ -453,6 +457,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708260434435_Update models.resx">
       <DependentUpon>201708260434435_Update models.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708260526001_Update identity user.resx">
+      <DependentUpon>201708260526001_Update identity user.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -6,6 +6,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using NicaWallet.Models;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NicaWallet.Models
 {
@@ -14,6 +15,7 @@ namespace NicaWallet.Models
     {
         public int Age { get; set; }
         public int Phone { get; set; }
+        [Column(TypeName = "datetime2")]
         public System.DateTime BirthDate { get; set; }
 
         //public virtual ICollection<Account> Accounts { get; set; }
