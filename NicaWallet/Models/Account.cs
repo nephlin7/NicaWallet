@@ -12,12 +12,13 @@ namespace NicaWallet.Models
     public class Account
     {
         public int AccountId { get; set; }
-        public string AccountName { get; set; }
-        public double StartingAmount { get; set; }
+        public string AccountName { get; set; }        
+        public double Amount { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? LastUpdate { get; set; }
         public bool? IsActive { get; set; }
         public string UserId { get; set; }
+        public string Color { get; set; }
 
         #region FOREINGKEYS
         [Display(Name = "Currency")]
@@ -32,7 +33,7 @@ namespace NicaWallet.Models
         [ForeignKey("AccountTypeId")]
         public virtual AccountType AccountType { get; set; }
 
-        
+
         //public virtual ApplicationUser User { get; set; }
 
         #endregion

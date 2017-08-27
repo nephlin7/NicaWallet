@@ -1,0 +1,109 @@
+﻿@model IEnumerable<NicaWallet.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cuentas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountType.AccountTypeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Currency.CurrencyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastUpdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th></th>
+    </tr>*@
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4">
+            <div class="white-box">
+                <h2 class="header-title">@Html.DisplayNameFor(model => model.AccountName)</h2>
+                <div class="inbox-scroll-list">
+                    <div class="inbox-inner">
+                        <a href="#">
+                            <div class="inbox-item">
+                                <div class="inbox-img">
+                                    <img src="assets/images/users/avatar-1.jpg" alt="" />
+                                </div>
+
+                                <div class="inbox-item-info">
+                                    <p class="author">John Doe</p>
+                                    <p class="inbox-message">Lorem Ipsum which looks....</p>
+                                    <p class="inbox-date">13:34 PM</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+            @*<tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType.AccountTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency.CurrencyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastUpdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AccountId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.AccountId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AccountId })
+                </td>
+            </tr>*@
+    }
+
+</div>

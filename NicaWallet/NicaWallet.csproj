@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -182,6 +183,14 @@
     <Compile Include="Migrations\201708260526001_Update identity user.cs" />
     <Compile Include="Migrations\201708260526001_Update identity user.Designer.cs">
       <DependentUpon>201708260526001_Update identity user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708271544210_Added color field to account model.cs" />
+    <Compile Include="Migrations\201708271544210_Added color field to account model.Designer.cs">
+      <DependentUpon>201708271544210_Added color field to account model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708271744166_Update amount field Account model.cs" />
+    <Compile Include="Migrations\201708271744166_Update amount field Account model.Designer.cs">
+      <DependentUpon>201708271744166_Update amount field Account model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -246,6 +255,8 @@
     <Content Include="assets\images\users\avatar-7.jpg" />
     <Content Include="assets\images\users\avatar-8.jpg" />
     <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\colorpicker-color.js" />
+    <Content Include="assets\js\colorpicker-component.js" />
     <Content Include="assets\js\functions.js" />
     <Content Include="assets\js\jquery.app.html" />
     <Content Include="assets\js\jquery.min.js" />
@@ -442,6 +453,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Category.cshtml" />
     <Content Include="Views\Shared\_LayoutAccount.cshtml" />
+    <Content Include="Views\Cuenta\Create.cshtml" />
+    <Content Include="Views\Cuenta\Delete.cshtml" />
+    <Content Include="Views\Cuenta\Details.cshtml" />
+    <Content Include="Views\Cuenta\Edit.cshtml" />
+    <Content Include="Views\Cuenta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -460,6 +476,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708260526001_Update identity user.resx">
       <DependentUpon>201708260526001_Update identity user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271544210_Added color field to account model.resx">
+      <DependentUpon>201708271544210_Added color field to account model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708271744166_Update amount field Account model.resx">
+      <DependentUpon>201708271744166_Update amount field Account model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
