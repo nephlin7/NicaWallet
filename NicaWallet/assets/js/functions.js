@@ -176,5 +176,9 @@ $(document).ready(function () {
 	
 	$(window).resize(function () {
 		setHeight();
-	});
+    });
+
+
+    $('.preloader-wrap').fadeOut();
+    $('body').removeClass('no-scroll');
 });

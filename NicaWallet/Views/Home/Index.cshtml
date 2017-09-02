@@ -1,8 +1,8 @@
 ﻿@{
-   ViewBag.Title = "Home Page";
+    ViewBag.Title = "Home Page";
 }
 
-        <!--Start row-->
+<!--Start row-->
 <div class="row">
     <!--Start info box-->
     <div class="col-md-3 col-sm-6">
@@ -469,3 +469,12 @@
     <!-- Start inbox widget-->
 </div>
 <!--End row-->
+
+@section scripts{
+    <!--Begin Page Level Plugin-->
+    <script src="/assets/plugins/morris-chart/morris.js"></script>
+    <script src="/assets/plugins/morris-chart/raphael-min.js"></script>
+    <script src="/assets/plugins/jquery-sparkline/jquery.sparkline.min.html"></script>
+    <script src="/assets/pages/dashboard.js"></script>
+    <!--End Page Level Plugin-->
+}

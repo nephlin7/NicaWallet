@@ -1,65 +1,78 @@
 ﻿@model IEnumerable<NicaWallet.Models.Category>
 
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "Categorias";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="white-box">
+    <p>
+        @*@Html.ActionLink("Create New", "Create")*@
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary outline-btn round" data-toggle="modal" data-target="#myModal">
+            <i class="icon-plus" aria-hidden="true"></i>  Crear Nueva Categoria
+        </button>
+    </p>
+    <div class="categories-list">
 
-<h2>Categorias</h2>
+        @foreach (var item in Model.Where(x => x.IsParent == true))
+        {
+            <div class="item">
+                <div class="column-icon">
+                    <div class="circle " style="background-color: rgb(244, 67, 54);">
+                        <span class="category-icon category-icon-restaurant-filled"></span>
+                    </div>
+                </div><div class="column-category">
+                    <div class="category-name">@Html.DisplayFor(modelItem => item.CategoryName)</div>
+                    <div class="category-subtitle">
 
-<p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-        <i class="fa fa-plus" aria-hidden="true"></i>  Crear Nueva Categoria
-    </button>
-</p>
-<table class="table table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>Actions</th>
-    </tr>
-
-    @foreach (var item in Model.Where(x => x.IsParent == true))
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-                <ul class="">
-                    @foreach (var item2 in Model.Where(x => x.ParentId == item.CategoryId))
-                    {
-                        <li class="">
-                            @item2.CategoryName
-                            <button type="button" class="btnDelete" onclick="return confirm('Estas seguro que quieres eliminar esta categoria?')" categoryId="@item2.CategoryId"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                            @Html.Hidden("CategoryId", item2.CategoryId)
-                        </li>
-                    }
-                </ul>
-
-                @Html.HiddenFor(modelItem => item.ParentId)
-                @Html.HiddenFor(modelItem => item.IsParent)
-            </td>
-            <td>
-                <div class="">
-                    <button data-toggle="tooltip" title="Editar" categoryId="@item.CategoryId" class="btnUpdate btn btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                    <button data-toggle="tooltip" title="Eliminar" type="button" onclick="return confirm('Estas seguro que quieres eliminar esta categoria?')" class="btn btn-danger btnDelete" categoryId="@item.CategoryId" name="Delete" value="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                    <button type="button" parentId="@item.CategoryId" class="btn btn-primary ModalActive" data-toggle="modal" data-target="#myModal">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </button>
+                    </div>
                 </div>
+                <div class="column-toolbar">
+                    <div>
+                        <div class="">
+                            <button data-toggle="tooltip" title="Editar" categoryId="@item.CategoryId" class="btnUpdate btn btn-info outline-btn round"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                            <button data-toggle="tooltip" title="Eliminar" type="button" class="btn btn-danger outline-btn round btnDelete" categoryId="@item.CategoryId" name="Delete" value="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            <button type="button" parentId="@item.CategoryId" class="btn btn-success outline-btn round ModalActive" data-toggle="modal" data-target="#myModal">
+                                <i class="icon-plus" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul>
+                <li>
+                    @foreach (var item2 in Model.Where(x => x.ParentId == item.CategoryId))
+                {
+                        <div class="item sub-item">
+                            <div class="column-icon">
+                                <div class="circle " style="background-color: rgb(158, 158, 158);">
+                                    <span class="category-icon category-icon-menu-filled"></span>
+                                </div>
+                            </div>
+                            <div class="column-category">
+                                <div class="category-name">@item2.CategoryName</div>
 
-            </td>
-        </tr>
-    }
+                            </div><div class="column-toolbar">
+                                <button data-toggle="tooltip" title="Eliminar" type="button" class="btn btn-danger outline-btn round btnDelete" categoryId="@item2.CategoryId"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                @Html.Hidden("CategoryId", item2.CategoryId)
 
-</table>
+                                @Html.HiddenFor(modelItem => item.ParentId)
+                                @Html.HiddenFor(modelItem => item.IsParent)
+                            </div>
+                        </div>
+                    }
+                </li>
+            </ul>
+        }
 
+    </div>
+</div>
 
 <!-- Modal Create Category -->
 @using (Html.BeginForm("CreateCategory", "admin", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -69,15 +82,13 @@
                 </div>
                 <div class="modal-body">
 
-                    @Html.AntiForgeryToken()
-
                     @Html.Label("Nombre Categoria")
                     @Html.TextBox("CategoryName", "", new { @class = "form-control" })
                     @Html.Hidden("ParentId")
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    <input type="submit" class="btn btn-info" name="Crear" value="Crear" />
+                    <button type="button" class="btn btn-danger outline-btn round " data-dismiss="modal">Cancelar</button>
+                    <input type="submit" class="btn btn-success outline-btn round " name="Crear" value="Crear" />
                 </div>
             </div>
         </div>
@@ -93,23 +104,39 @@
         $('.btnDelete').click(function () {
             var categoryId = $(this).attr('categoryId');
             var url = "/admin/DeleteCategory";
-            $.ajax({
-                url: url,
-                data: { 'categoryId': categoryId },
-                type: "post",
-                cache: false
-            }).success(function (response) {
-                if (response.ResponseCode == "200") {
-                    alert("Bien Hecho se elimino correctamente")
-                    location.reload();
-                } else {
-                    alert("No se puede eliminar tiene categorias hijas")
-                }
-            }).error(function (error) {
-                alert("Ah ocurrido un error, Intentelo de nuevo");
-                location.reload();
-            });
-            return true;
+            swal({
+                title: "Alerta",
+                text: "Estas seguro que quieres eliminar esta categoria?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel plx!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            url: url,
+                            data: { 'categoryId': categoryId },
+                            type: "post",
+                            cache: false
+                        }).success(function (response) {
+                            if (response.ResponseCode == "200") {
+                                swal("Buen trabajo!", "Se elimino correctamente!", "success");
+                            } else {
+                                swal("Aviso!", "No se puede eliminar tiene categorias hija!", "info");
+                            }
+                        }).error(function (error) {
+                            swal("Aviso!", "Ah ocurrido un error, Intentelo de nuevo", "error");
+                        });
+                        return true;
+                    } else {
+                        swal("Cancelled", "Tus datos estan a salvo :)", "error");
+                    }
+                });
+
         });
         $(document).ready(function () {
             $('[data-toggle="tooltip"]').tooltip();
