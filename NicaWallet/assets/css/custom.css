@@ -50,6 +50,9 @@ body {
     line-height: 37px;
     font-weight:500;
 }
+.navbar-right {
+    margin-right: -8px;
+}
 
     .custom-logo-login .icon-wallet {
         font-size: 40px;

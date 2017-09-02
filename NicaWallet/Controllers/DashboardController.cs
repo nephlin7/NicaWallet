@@ -6,7 +6,8 @@ using System.Web.Mvc;
 
 namespace NicaWallet.Controllers
 {
-    public class HomeController : Controller
+    [Authorize]
+    public class DashboardController : Controller
     {
         public ActionResult Index()
         {

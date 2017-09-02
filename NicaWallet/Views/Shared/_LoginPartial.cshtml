@@ -7,9 +7,9 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li style="display:flex;align-items:center;">
-                <i class="icon-user"></i>@Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                 <a href="/Manage"><i class="icon-settings"></i> Manage Account</a>
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="icon-logout"></i> Cerrar sesión</a></li>
         </ul>
     }
 }

@@ -8,11 +8,12 @@ using System.Data.Entity;
 
 namespace NicaWallet.Controllers
 {
-    public class AdminController : Controller
+    [Authorize]
+    public class CategoriesController : Controller
     {
         private ApplicationDbContext dbContext = new ApplicationDbContext();
         //GET: Admin
-        public ActionResult Category()
+        public ActionResult Index()
         {
             var listCategory = dbContext.Category.ToList();
             return View(listCategory);

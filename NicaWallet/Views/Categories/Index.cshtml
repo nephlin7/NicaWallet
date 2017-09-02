@@ -30,8 +30,8 @@
                 <div class="column-toolbar">
                     <div>
                         <div class="">
-                            <button data-toggle="tooltip" title="Editar" categoryId="@item.CategoryId" class="btnUpdate btn btn-info outline-btn round"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                            <button data-toggle="tooltip" title="Eliminar" type="button" class="btn btn-danger outline-btn round btnDelete" categoryId="@item.CategoryId" name="Delete" value="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            <button data-toggle="tooltip" title="Editar" categoryId="@item.CategoryId" class="btnUpdate btn btn-info outline-btn round"><i class="icon-note" aria-hidden="true"></i></button>
+                            <button data-toggle="tooltip" title="Eliminar" type="button" class="btn btn-danger outline-btn round btnDelete" categoryId="@item.CategoryId" name="Delete" value="Delete"><i class="icon-trash" aria-hidden="true"></i></button>
                             <button type="button" parentId="@item.CategoryId" class="btn btn-success outline-btn round ModalActive" data-toggle="modal" data-target="#myModal">
                                 <i class="icon-plus" aria-hidden="true"></i>
                             </button>
@@ -53,7 +53,7 @@
                                 <div class="category-name">@item2.CategoryName</div>
 
                             </div><div class="column-toolbar">
-                                <button data-toggle="tooltip" title="Eliminar" type="button" class="btn btn-danger outline-btn round btnDelete" categoryId="@item2.CategoryId"> <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                <button data-toggle="tooltip" title="Eliminar" type="button" class="btn btn-danger outline-btn round btnDelete" categoryId="@item2.CategoryId"> <i class="icon-trash" aria-hidden="true"></i></button>
                                 @Html.Hidden("CategoryId", item2.CategoryId)
 
                                 @Html.HiddenFor(modelItem => item.ParentId)
@@ -63,6 +63,7 @@
                     }
                 </li>
             </ul>
+            <hr style="border-color:#f6f6f6" />
         }
 
     </div>
@@ -81,7 +82,6 @@
                     <h4 class="modal-title" id="myModalLabel">Nueva Categoria</h4>
                 </div>
                 <div class="modal-body">
-
                     @Html.Label("Nombre Categoria")
                     @Html.TextBox("CategoryName", "", new { @class = "form-control" })
                     @Html.Hidden("ParentId")
