@@ -16,14 +16,16 @@ namespace NicaWallet.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            ViewBag.accounts =  dbContext.Account
+            ViewBag.accounts = dbContext.Account
                                    .Include(a => a.AccountType)
                                    .Include(a => a.Currency)
                                    .Where(x => x.UserId.Equals(userId))
+                                   .Take(3)
                                    .ToList();
             ViewBag.records = dbContext.Record.Include(r => r.Account)
                               .Include(r => r.Category)
                               .Include(r => r.Currency)
+                              .Take(10)
                               .ToList();
             return View();
         }

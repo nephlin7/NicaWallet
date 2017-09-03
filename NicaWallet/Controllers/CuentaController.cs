@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NicaWallet.Models;
-
+using Microsoft.AspNet.Identity;
 namespace NicaWallet.Controllers
 {
     public class CuentaController : Controller
@@ -49,8 +49,13 @@ namespace NicaWallet.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccountId,AccountName,Amount,CreatedDate,LastUpdate,IsActive,UserId,Color,CurrencyId,AccountTypeId")] Account account)
+        public ActionResult Create([Bind(Include = "AccountName,Amount,Color,CurrencyId,AccountTypeId")] Account account)
         {
+            account.CreatedDate = DateTime.Now;
+            account.LastUpdate = DateTime.Now;
+            account.UserId = User.Identity.GetUserId();
+            account.IsActive = true;
+
             if (ModelState.IsValid)
             {
                 db.Account.Add(account);

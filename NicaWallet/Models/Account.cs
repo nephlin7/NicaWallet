@@ -14,12 +14,14 @@ namespace NicaWallet.Models
         public int AccountId { get; set; }
         public string AccountName { get; set; }        
         public double Amount { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
         public DateTime? CreatedDate { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/mm/yyyy}")]
         public DateTime? LastUpdate { get; set; }
         public bool? IsActive { get; set; }
         public string UserId { get; set; }
         public string Color { get; set; }
-        public string AccountIcon { get; set; }
+
         #region FOREINGKEYS
         [Display(Name = "Currency")]
         public int? CurrencyId { get; set; }

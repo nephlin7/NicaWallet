@@ -209,6 +209,14 @@
     <Compile Include="Migrations\201709022338347_add-icon-account-dateInsert-record.Designer.cs">
       <DependentUpon>201709022338347_add-icon-account-dateInsert-record.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709030725090_PaymentType-not-null.cs" />
+    <Compile Include="Migrations\201709030725090_PaymentType-not-null.Designer.cs">
+      <DependentUpon>201709030725090_PaymentType-not-null.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709030950231_remove-account-icon-add-to-Account-type.cs" />
+    <Compile Include="Migrations\201709030950231_remove-account-icon-add-to-Account-type.Designer.cs">
+      <DependentUpon>201709030950231_remove-account-icon-add-to-Account-type.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountType.cs" />
@@ -234,6 +242,7 @@
     <Content Include="assets\css\icons\material-design-icon\fonts\materialdesignicons-webfont8d40.html" />
     <Content Include="assets\css\icons\material-design-icon\fonts\materialdesignicons-webfont8d40.svg" />
     <Content Include="assets\css\icons\material-design-icon\materialdesignicons.css" />
+    <Content Include="assets\css\icons\nicawallet-icon\nicawalleticons.css" />
     <Content Include="assets\css\icons\simple-line-icon\fonts\Simple-Line-Iconsb26c.html" />
     <Content Include="assets\css\icons\simple-line-icon\fonts\Simple-Line-Iconsb26c.svg" />
     <Content Include="assets\css\icons\simple-line-icon\simple-line-icons.css" />
@@ -423,9 +432,9 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\fonts\glyphicons-halflings-regulard41dd41d.eot" />
-    <Content Include="assets\css\302ecceb6692fd145c0e64137694198b.woff" />
-    <Content Include="assets\css\591997b6e6038a335c5f0cd3925e595e.eot" />
-    <Content Include="assets\css\f34667558dd9c79386aa74f0680d9817.ttf" />
+    <Content Include="assets\css\icons\nicawallet-icon\fonts\302ecceb6692fd145c0e64137694198b.woff" />
+    <Content Include="assets\css\icons\nicawallet-icon\fonts\591997b6e6038a335c5f0cd3925e595e.eot" />
+    <Content Include="assets\css\icons\nicawallet-icon\fonts\f34667558dd9c79386aa74f0680d9817.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -482,7 +491,6 @@
     <Content Include="Views\Cuenta\Index.cshtml" />
     <Content Include="Views\Records\Create.cshtml" />
     <Content Include="Views\Records\Delete.cshtml" />
-    <Content Include="Views\Records\Details.cshtml" />
     <Content Include="Views\Records\Edit.cshtml" />
     <Content Include="Views\Records\Index.cshtml" />
   </ItemGroup>
@@ -521,6 +529,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709022338347_add-icon-account-dateInsert-record.resx">
       <DependentUpon>201709022338347_add-icon-account-dateInsert-record.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030725090_PaymentType-not-null.resx">
+      <DependentUpon>201709030725090_PaymentType-not-null.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030950231_remove-account-icon-add-to-Account-type.resx">
+      <DependentUpon>201709030950231_remove-account-icon-add-to-Account-type.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

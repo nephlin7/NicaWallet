@@ -4,36 +4,38 @@
     ViewBag.Title = "Records";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <div class="white-box">
     <p>
-        @Html.ActionLink("Create New", "Create")
+
+        <a href="/Records/Create" class="btn btn-primary outline-btn round">
+            <i class="icon-plus" aria-hidden="true"></i>  Crear Nueva record
+        </a>
     </p>
     <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Account.AccountName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category.CategoryName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Currency.CurrencyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Note)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PaymentType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecordDateInsert)
-            </th>
-            <th></th>
-        </tr>
+        <thead>
+            <tr>
+                <th>
+                    Cuenta
+                </th>
+                <th>
+                    Categoria
+                </th>
+                <th>
+                    Moneda
+                </th>
+                <th>
+                    Monto
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentType)
+                </th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
 
         @foreach (var item in Model)
         {
@@ -41,23 +43,25 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Account.AccountName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                <td class="text-center">
+                    <div class="column-icon">
+                        <div class="circle " style="background-color: rgb(244, 67, 54);">
+                            <span class="category-icon @Html.DisplayFor(modelItem => item.Category.CategoryIcon)"></span>
+                        </div>
+                    </div>
+
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Currency.CurrencyName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Amount)
+                    @(item.PaymentType == true ? "+" : "-")   @Html.DisplayFor(modelItem => item.Amount)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Note)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PaymentType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.RecordDateInsert)
+                <td class="text-center">
+                    <i style="font-size:22px;" class="@(item.PaymentType == true ? "icon-arrow-up-circle green" : " icon-arrow-down-circle red")"></i>
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.RecordId }) |
@@ -68,3 +72,13 @@
 
     </table>
 </div>
+
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+}
