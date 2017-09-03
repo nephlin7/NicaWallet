@@ -22,7 +22,7 @@ namespace NicaWallet.Controllers
             var record = db.Record.Include(r => r.Account).Include(r => r.Category).Include(r => r.Currency);
             if (accountId > 0)
             {
-                var record2 = (from Record in record.Where(x => x.AccountId.Equals(accountId)) select record);
+                var record2 = (from Record in record.Where(x => x.AccountId.Equals(accountId)) select Record);
                 return View(record2.ToList());
             }
 

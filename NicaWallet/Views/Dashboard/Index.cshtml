@@ -138,21 +138,28 @@
     </div>
 
 
+    @*<div class="col-md-6">
+            <div class="white-box">
+                <h2 class="header-title">Total Revenue </h2>
+                <ul class="list-inline text-center m-t-10">
+                    <li>
+                        <h5><i class="fa fa-circle m-r-5" style="color:#03A9F3;"></i>Section A</h5>
+                    </li>
+                    <li>
+                        <h5><i class="fa fa-circle m-r-5" style="color: #FFAA00;"></i>Section B</h5>
+                    </li>
+                </ul>
+                <div id="morris2" style="height:250px;"></div>
+
+            </div>
+        </div>*@<!-- /col-md-6-->
     <div class="col-md-6">
         <div class="white-box">
-            <h2 class="header-title">Total Revenue </h2>
-            <ul class="list-inline text-center m-t-10">
-                <li>
-                    <h5><i class="fa fa-circle m-r-5" style="color:#03A9F3;"></i>Section A</h5>
-                </li>
-                <li>
-                    <h5><i class="fa fa-circle m-r-5" style="color: #FFAA00;"></i>Section B</h5>
-                </li>
-            </ul>
-            <div id="morris2" style="height:250px;"></div>
-
+            <h2 class="header-title">Last 3 months</h2>
+            <canvas id="lastMonths"></canvas>
         </div>
-    </div><!-- /col-md-6-->
+    </div>
+    
 
 </div>
 <!--End row-->
@@ -186,241 +193,55 @@
         </div>
     </div>
 </div>
-<!-- End inbox widget-->
-@* Transacciones recientes *@
-<!--Start row-->
-@*<div class="row">
-
-
-        <!--Start chat widget-->
-        <div class="col-md-4">
-            <div class="white-box">
-                <h2 class="header-title">Chat</h2>
-
-                <div class="chat-widget">
-                    <ul class="chat-scroll-list">
-                        <li class="left">
-                            <img src="assets/images/users/avatar-6.jpg" alt="" />
-                            <div class="chat-info">
-                                <a class="name" href="#">Jone Doe</a>
-                                <span class="datetime">6:12</span>
-                                <span class="message">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </span>
-                            </div>
-                        </li>
-
-                        <li class="right">
-                            <img src="assets/images/users/avatar-6.jpg" alt="" />
-                            <div class="chat-info">
-                                <a class="name" href="#">Jone Doe</a>
-                                <span class="datetime">6:12</span>
-                                <span class="message">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </span>
-                            </div>
-                        </li>
-
-                        <li class="left">
-                            <img src="assets/images/users/avatar-6.jpg" alt="" />
-                            <div class="chat-info">
-                                <a class="name" href="#">Jone Doe</a>
-                                <span class="datetime">6:12</span>
-                                <span class="message">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </span>
-                            </div>
-                        </li>
-
-                        <li class="right">
-                            <img src="assets/images/users/avatar-6.jpg" alt="" />
-                            <div class="chat-info">
-                                <a class="name" href="#">Jone Doe</a>
-                                <span class="datetime">6:12</span>
-                                <span class="message">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                                </span>
-                            </div>
-                        </li>
-
-                    </ul>
-                </div>
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="input-group">
-                            <input class="form-control" placeholder="Say something" type="text">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button">Send</button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!--End chat widget-->
-        <!-- Start timeline-->
-        <div class="col-md-4">
-            <div class="white-box">
-                <h2 class="header-title">Latest Activity</h2>
-                <ul class="timeline timeline-compact">
-                    <li class="latest">
-                        <div class="timeline-date">Just Now</div>
-                        <div class="timeline-title">Create New Page</div>
-                        <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
-                    </li>
-
-                    <li>
-                        <div class="timeline-date">Just Now</div>
-                        <div class="timeline-title">Back Up Theme</div>
-                        <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
-                    </li>
-
-                    <li>
-                        <div class="timeline-date">Just Now</div>
-                        <div class="timeline-title">Changes In The Structure</div>
-                        <div class="timeline-description">Lorem Ipsum generators on the tend to repeat. </div>
-                    </li>
-
-                    <li>
-                        <div class="timeline-date">Just Now</div>
-                        <div class="timeline-title">New user register</div>
-                        <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-        <!-- End timeline-->
-        <!-- Start inbox widget-->
-        <div class="col-md-12">
-            <div class="white-box">
-                <h2 class="header-title"> Projects </h2>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Project Name</th>
-                                <th>Start Date</th>
-                                <th>Deadline Date</th>
-                                <th>Status</th>
-                                <th>Progress</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Design new theme</td>
-                                <td>10/10/2016</td>
-                                <td>12/11/2016</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="progress progress-striped progress-sm">
-                                        <div class="progress-bar progress-bar-warning" style="width: 25%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Website Redesign</td>
-                                <td>10/10/2016</td>
-                                <td>12/11/2016</td>
-                                <td><span class="label label-success">In Progress</span></td>
-                                <td>
-                                    <div class="progress progress-striped progress-sm">
-                                        <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Mockup Design</td>
-                                <td>10/10/2016</td>
-                                <td>12/11/2016</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="progress progress-striped progress-sm">
-                                        <div class="progress-bar progress-bar-primary" style="width: 25%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Admin Panel design</td>
-                                <td>10/10/2016</td>
-                                <td>12/11/2016</td>
-                                <td><span class="label label-success">In Progress</span></td>
-                                <td>
-                                    <div class="progress progress-striped progress-sm">
-                                        <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Front End Design</td>
-                                <td>10/10/2016</td>
-                                <td>12/11/2016</td>
-                                <td><span class="label label-danger">On Hold</span></td>
-                                <td>
-                                    <div class="progress progress-striped progress-sm">
-                                        <div class="progress-bar progress-bar-danger" style="width: 25%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Software Testing</td>
-                                <td>10/10/2016</td>
-                                <td>12/11/2016</td>
-                                <td><span class="label label-success">In Progress</span></td>
-                                <td>
-                                    <div class="progress progress-striped progress-sm">
-                                        <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Admin Panel design</td>
-                                <td>10/10/2016</td>
-                                <td>12/11/2016</td>
-                                <td><span class="label label-danger">On Hold</span></td>
-                                <td>
-                                    <div class="progress progress-striped progress-sm">
-                                        <div class="progress-bar progress-bar-danger" style="width: 25%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>Website Redesign</td>
-                                <td>10/10/2016</td>
-                                <td>12/11/2016</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>
-                                    <div class="progress progress-striped progress-sm">
-                                        <div class="progress-bar progress-bar-warning" style="width: 25%;"></div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </div>
-        </div>
-        <!-- Start inbox widget-->
-    </div>*@
-<!--End row-->
 
 @section scripts{
     <!--Begin Page Level Plugin-->
-    <script src="/assets/plugins/morris-chart/morris.js"></script>
+    @*<script src="/assets/plugins/morris-chart/morris.js"></script>*@
     <script src="/assets/plugins/morris-chart/raphael-min.js"></script>
     <script src="/assets/plugins/jquery-sparkline/jquery.sparkline.min.html"></script>
     <script src="/assets/pages/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
+
+    <script>
+        var ctx = document.getElementById("lastMonths");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
     <!--End Page Level Plugin-->
 }

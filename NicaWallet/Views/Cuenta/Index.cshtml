@@ -47,11 +47,11 @@
     {
 
         <div class="col-md-4">
-            <div class="white-box">
+            <div class="white-box" style="border-bottom: 6px solid @item.Color">
                 <h2 class="header-title">@item.AccountName</h2>
                 <div class="">
                     <div class="inbox-inner">
-                        <a style="display:block" href="/Records?accountId=@item.AccountId">
+                        <a href="#">
                             <div class="inbox-item">
                                 <div class="inbox-img">
                                     <img src="assets/images/users/avatar-1.jpg" alt="" />
@@ -61,6 +61,8 @@
                                     <p class="author">@item.Currency.CurrencyName @item.Amount</p>
                                     <p class="inbox-message">@item.AccountType.AccountTypeName</p>
                                     <p class="inbox-date">@item.LastUpdate</p>
+                                    <a href="/Cuenta/Edit?id=@item.AccountId" class="btn btn-info outline-btn round" style="float:right"><i class="icon-note" aria-hidden="true"></i>Edit</a>
+                                    <a AccountId="@item.AccountId" class="btn btn-danger outline-btn round btnDelete" style="float:right"><i class="icon-note" aria-hidden="true"></i>Delete</a>
                                 </div>
                             </div>
                         </a>
@@ -107,3 +109,45 @@
     }
 
 </div>
+@section scripts{
+    <script>
+        $('.btnDelete').click(function () {
+            var AccountId = $(this).attr('AccountId');
+            var url = "/Cuenta/Delete";
+            swal({
+                title: "Alerta",
+                text: "Estas seguro que quieres eliminar esta cuenta?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel plx!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            url: url,
+                            data: { 'AccountId': AccountId },
+                            type: "post",
+                            cache: false
+                        }).success(function (response) {
+                            if (response.ResponseCode == "200") {
+                                swal("Buen trabajo!", "Se elimino correctamente!", "success");
+                                location.reload();
+                            } else {
+                                swal("Aviso!", "No encontramos esta cuenta, por favor vuelva a intentar", "info");
+                            }
+                        }).error(function (error) {
+                            swal("Aviso!", "Ah ocurrido un error, Intentelo de nuevo", "error");
+                        });
+                        return true;
+                    } else {
+                        swal("Cancelled", "Tus datos estan a salvo :)", "error");
+                    }
+                });
+
+        });
+    </script>
+}

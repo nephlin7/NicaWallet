@@ -16,7 +16,7 @@ namespace NicaWallet.Controllers
         public ActionResult Index()
         {
             var userId = User.Identity.GetUserId();
-            ViewBag.accounts =  dbContext.Account
+            ViewBag.accounts = dbContext.Account
                                    .Include(a => a.AccountType)
                                    .Include(a => a.Currency)
                                    .Where(x => x.UserId.Equals(userId))
@@ -25,7 +25,26 @@ namespace NicaWallet.Controllers
                               .Include(r => r.Category)
                               .Include(r => r.Currency)
                               .ToList();
+            //LastMonths();
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult LastMonths()
+        {
+            string userId = User.Identity.GetUserId();
+            DateTime dt_inicio = DateTime.Now.AddMonths(-1);
+            DateTime dt_fin = DateTime.Now;
+            var data = (from r in dbContext.Record
+                        join a in dbContext.Account on r.AccountId equals a.AccountId
+                        where (a.UserId == userId) && (r.RecordDateInsert >= dt_inicio) && (r.RecordDateInsert <= dt_fin)
+                        && (r.PaymentType == true)
+                        select new
+                        {
+                            r.Amount,
+                            a.AccountName
+                        }).Sum(x => x.Amount);
+            return Json(data);
         }
 
         public ActionResult About()

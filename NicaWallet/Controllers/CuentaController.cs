@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using NicaWallet.Models;
+using Microsoft.AspNet.Identity;
 
 namespace NicaWallet.Controllers
 {
@@ -49,14 +50,28 @@ namespace NicaWallet.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AccountId,AccountName,Amount,CreatedDate,LastUpdate,IsActive,UserId,Color,CurrencyId,AccountTypeId")] Account account)
+        public ActionResult Create([Bind(Include = "AccountId,AccountName,Amount,Color,CurrencyId,AccountTypeId")] Account account)
         {
+
+            account.CreatedDate = DateTime.Now;
+            account.LastUpdate = DateTime.Now;
+            account.IsActive = true;
+            account.UserId = User.Identity.GetUserId();
+            if (account.AccountTypeId == 1)
+            {
+                account.AccountIcon = "asd";
+            }
+            else
+            {
+                account.AccountIcon = "asd";
+            }
             if (ModelState.IsValid)
             {
                 db.Account.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
 
             ViewBag.AccountTypeId = new SelectList(db.AccountType, "AccountTypeId", "AccountTypeName", account.AccountTypeId);
             ViewBag.CurrencyId = new SelectList(db.Currency, "CurrencyId", "CurrencyName", account.CurrencyId);
@@ -64,9 +79,10 @@ namespace NicaWallet.Controllers
         }
 
         // GET: Cuenta/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
+            var id = String.IsNullOrEmpty(Request.QueryString["id"]) ? 0 : Convert.ToInt32(Request.QueryString["id"]);
+            if (id == 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -85,11 +101,15 @@ namespace NicaWallet.Controllers
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AccountId,AccountName,Amount,CreatedDate,LastUpdate,IsActive,UserId,Color,CurrencyId,AccountTypeId")] Account account)
+        public ActionResult Edit([Bind(Include = "AccountName,Amount,IsActive,Color,CurrencyId,AccountTypeId")] Account account)
         {
-            if (ModelState.IsValid)
+            var id = String.IsNullOrEmpty(Request.QueryString["id"]) ? 0 : Convert.ToInt32(Request.QueryString["id"]);
+            Account accountUp = db.Account.Find(id);
+            if (accountUp != null)
             {
-                db.Entry(account).State = EntityState.Modified;
+                account.AccountId = id;
+                account.LastUpdate = DateTime.Now;             
+                db.Entry(accountUp).CurrentValues.SetValues(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -99,30 +119,28 @@ namespace NicaWallet.Controllers
         }
 
         // GET: Cuenta/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public ActionResult Delete(int? AccountId)
         {
-            if (id == null)
+            if (AccountId != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Account account = db.Account.Find(AccountId);
+                if (account == null)
+                {
+                    return Json(new { ResponseCode = "203" });
+                }
+                else
+                {
+                    db.Account.Remove(account);
+                    db.SaveChanges();
+                    return Json(new { ResponseCode = "200" });
+                }
             }
-            Account account = db.Account.Find(id);
-            if (account == null)
-            {
-                return HttpNotFound();
-            }
-            return View(account);
-        }
+            else
+                return Json(new { ResponseCode = "203" });
 
-        // POST: Cuenta/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Account account = db.Account.Find(id);
-            db.Account.Remove(account);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
+               
 
         protected override void Dispose(bool disposing)
         {

@@ -209,6 +209,26 @@
     <Compile Include="Migrations\201709022338347_add-icon-account-dateInsert-record.Designer.cs">
       <DependentUpon>201709022338347_add-icon-account-dateInsert-record.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709030636162_update Account.cs" />
+    <Compile Include="Migrations\201709030636162_update Account.Designer.cs">
+      <DependentUpon>201709030636162_update Account.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709030640109_update Account 3.cs" />
+    <Compile Include="Migrations\201709030640109_update Account 3.Designer.cs">
+      <DependentUpon>201709030640109_update Account 3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709030904267_Update Account 4.cs" />
+    <Compile Include="Migrations\201709030904267_Update Account 4.Designer.cs">
+      <DependentUpon>201709030904267_Update Account 4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709030906242_Update Account 5.cs" />
+    <Compile Include="Migrations\201709030906242_Update Account 5.Designer.cs">
+      <DependentUpon>201709030906242_Update Account 5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709031244023_Fill DB.cs" />
+    <Compile Include="Migrations\201709031244023_Fill DB.Designer.cs">
+      <DependentUpon>201709031244023_Fill DB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountType.cs" />
@@ -222,6 +242,11 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\aspnet-NicaWallet-20170730103825.mdf" />
+    <Content Include="App_Data\aspnet-NicaWallet-20170730103825_log.ldf">
+      <DependentUpon>aspnet-NicaWallet-20170730103825.mdf</DependentUpon>
+    </Content>
+    <Content Include="assets\css\colorpicker.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\custom.css" />
     <Content Include="assets\css\font-awesome.min.html" />
@@ -275,11 +300,13 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\colorpicker-color.js" />
     <Content Include="assets\js\colorpicker-component.js" />
+    <Content Include="assets\js\colorpicker.js" />
     <Content Include="assets\js\functions.js" />
     <Content Include="assets\js\jquery.app.html" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\jquery.nicescroll.js" />
     <Content Include="assets\js\jquery.slimscroll.js" />
+    <Content Include="assets\css\layout.css" />
     <Content Include="assets\pages\bootstrap-editable-custom.js" />
     <Content Include="assets\pages\calendar-custom.js" />
     <Content Include="assets\pages\chartjs-custom.js" />
@@ -486,9 +513,7 @@
     <Content Include="Views\Records\Edit.cshtml" />
     <Content Include="Views\Records\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -521,6 +546,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709022338347_add-icon-account-dateInsert-record.resx">
       <DependentUpon>201709022338347_add-icon-account-dateInsert-record.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030636162_update Account.resx">
+      <DependentUpon>201709030636162_update Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030640109_update Account 3.resx">
+      <DependentUpon>201709030640109_update Account 3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030904267_Update Account 4.resx">
+      <DependentUpon>201709030904267_Update Account 4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709030906242_Update Account 5.resx">
+      <DependentUpon>201709030906242_Update Account 5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709031244023_Fill DB.resx">
+      <DependentUpon>201709031244023_Fill DB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

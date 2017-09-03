@@ -12,18 +12,26 @@ namespace NicaWallet.Models
     public class Account
     {
         public int AccountId { get; set; }
+
+        [Required]
+        [Display(Name ="Name")]
         public string AccountName { get; set; }        
+        [Required]
         public double Amount { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        public DateTime? LastUpdate { get; set; }
-        public bool? IsActive { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime CreatedDate { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime LastUpdate { get; set; }        
+        public bool IsActive { get; set; }        
         public string UserId { get; set; }
+        [Required]
         public string Color { get; set; }
         public string AccountIcon { get; set; }
-        #region FOREINGKEYS
-        [Display(Name = "Currency")]
-        public int? CurrencyId { get; set; }
 
+
+        #region FOREINGKEYS        
+        public int? CurrencyId { get; set; }
+        
         [ForeignKey("CurrencyId")]
         public virtual Currency Currency { get; set; }
 
