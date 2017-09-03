@@ -11,5 +11,6 @@ namespace NicaWallet.Models
     {
         public int AccountTypeId { get; set; }
         public string AccountTypeName { get; set; }
+        public string AccountIcon { get; set; }
     }
 }

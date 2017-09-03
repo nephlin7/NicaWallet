@@ -20,10 +20,12 @@ namespace NicaWallet.Controllers
                                    .Include(a => a.AccountType)
                                    .Include(a => a.Currency)
                                    .Where(x => x.UserId.Equals(userId))
+                                   .Take(3)
                                    .ToList();
             ViewBag.records = dbContext.Record.Include(r => r.Account)
                               .Include(r => r.Category)
                               .Include(r => r.Currency)
+                              .Take(10)
                               .ToList();
             //LastMonths();
             return View();

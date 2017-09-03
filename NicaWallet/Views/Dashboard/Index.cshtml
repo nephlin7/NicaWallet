@@ -4,6 +4,10 @@
     ViewBag.Title = "DashBoard";
     ApplicationDbContext dbContext = new ApplicationDbContext();
     var accountCount = dbContext.Account.Count();
+    var balance = dbContext.Account.Sum(x => x.Amount);
+    var totalEarning = dbContext.Record.Where(x => x.PaymentType == true).Sum(x => x.Amount);
+    var totalExpenses = dbContext.Record.Where(x => x.PaymentType == false).Sum(x => x.Amount);
+    var expensesByCategory = dbContext.Record.Include("Category").Include("Currency").Where(x => x.PaymentType == false);
 }
 
 <!--Start row-->
@@ -31,7 +35,7 @@
     <div class="col-md-3 col-sm-6">
         <div class="info-box-main">
             <div class="info-stats">
-                <p>C$ 2300</p>
+                <p>C$ @balance</p>
                 <span>Balance</span>
             </div>
             <div class="info-icon text-info">
@@ -50,8 +54,8 @@
     <div class="col-md-3 col-sm-6">
         <div class="info-box-main">
             <div class="info-stats">
-                <p>5320</p>
-                <span>Total Earning</span>
+                <p>+ @totalEarning</p>
+                <span>Total Ingresos</span>
             </div>
             <div class="info-icon text-warning">
                 <i class="fa fa-dollar"></i>
@@ -69,11 +73,11 @@
     <div class="col-md-3 col-sm-6">
         <div class="info-box-main">
             <div class="info-stats">
-                <p>65</p>
-                <span>Pending Orders</span>
+                <p>- @totalExpenses</p>
+                <span>Total Gastos</span>
             </div>
             <div class="info-icon text-danger">
-                <i class="mdi mdi-weight"></i>
+                <i class=" icon-handbag "></i>
             </div>
             <div class="info-box-progress">
                 <div class="progress">
@@ -98,14 +102,15 @@
                     <div class="inbox-inner">
                         <a href="#">
                             <div class="inbox-item">
-                                <div class="inbox-img">
-                                    <img src="assets/images/users/avatar-1.jpg" alt="" />
+                                <div class="icon-account-dashboard" style="background-color:@item.Color">
+                                    <i class="category-icon @item.AccountType.AccountIcon"></i>
                                 </div>
 
                                 <div class="inbox-item-info">
                                     <p class="author">@item.Currency.CurrencyName @item.Amount</p>
                                     <p class="inbox-message">@item.AccountType.AccountTypeName</p>
-                                    <p class="inbox-date">@item.LastUpdate</p>
+                                    <p class="inbox-date">@item.LastUpdate.ToShortDateString()</p>
+                                    <a href="/Records?accountId=@item.AccountId" data-toggle="tooltip" title="Ver records" style="float:right" class="icon-action-redo"></a>
                                 </div>
                             </div>
                         </a>
@@ -114,6 +119,7 @@
                 </div>
             </div>
         </div>
+
     }
 </div>
 @* Cuentas *@
@@ -182,8 +188,8 @@
                             <div class="inbox-item-info">
                                 <p class="author">@item.Category.CategoryName</p>
                                 <p class="inbox-message">@item.Account.AccountName</p>
-                                <p class="inbox-date">@item.RecordDateInsert.ToString("dd/mm/yyyy")</p>
-                                <p class="record-amount">@item.Currency.CurrencyName  @item.Amount</p>
+                                <p class="inbox-date">@item.RecordDate.ToShortDateString()</p>
+                                <p class="record-amount">@(item.PaymentType == true ? "+" : "-") @item.Currency.CurrencyName  @item.Amount</p>
                             </div>
                         </div>
                     </a>
@@ -193,6 +199,38 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
+=======
+<!-- Start timeline-->
+<div class="col-md-8">
+    <div class="white-box">
+
+        <h2 class="header-title">Gastos por Categoria</h2>
+        <ul class="list-unstyled">
+
+            @foreach (var item in expensesByCategory)
+            {
+                <li class="expenses-by-category-wrap">
+                    <div>
+                        <div class="icon-expense-category  bg-primary"> <i class="category-icon  @item.Category.CategoryIcon"></i></div>
+
+                        <span>@item.Category.CategoryName</span>
+                    </div>
+                    <div>
+                      - @item.Currency.CurrencyName @item.Amount
+                        <br />
+                        @item.RecordDate.ToShortDateString()
+                    </div>
+                </li>
+            }
+        </ul>
+
+    </div>
+</div>
+<!-- End timeline-->
+<!-- End inbox widget-->
+@* Transacciones recientes *@
+>>>>>>> 930095f7e86138c917c05e8e53dc462c24b3d273
 
 @section scripts{
     <!--Begin Page Level Plugin-->
@@ -200,6 +238,7 @@
     <script src="/assets/plugins/morris-chart/raphael-min.js"></script>
     <script src="/assets/plugins/jquery-sparkline/jquery.sparkline.min.html"></script>
     <script src="/assets/pages/dashboard.js"></script>
+<<<<<<< HEAD
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.js"></script>
 
@@ -243,5 +282,12 @@
         });
     </script>
 
+=======
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+>>>>>>> 930095f7e86138c917c05e8e53dc462c24b3d273
     <!--End Page Level Plugin-->
 }

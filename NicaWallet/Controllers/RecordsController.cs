@@ -18,29 +18,14 @@ namespace NicaWallet.Controllers
         public ActionResult Index()
         {
 
-            var accountId = Convert.ToInt32(Request.QueryString["accountId"].ToString());
-            var record = db.Record.Include(r => r.Account).Include(r => r.Category).Include(r => r.Currency);
+            var accountId = Convert.ToInt32(Request.QueryString["accountId"]);
+            List<Record> record = db.Record.Include(r => r.Account).Include(r => r.Category).Include(r => r.Currency).ToList();
             if (accountId > 0)
             {
                 var record2 = (from Record in record.Where(x => x.AccountId.Equals(accountId)) select Record);
                 return View(record2.ToList());
             }
 
-            return View(record.ToList());
-        }
-
-        // GET: Records/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Record record = db.Record.Find(id);
-            if (record == null)
-            {
-                return HttpNotFound();
-            }
             return View(record);
         }
 
@@ -53,13 +38,15 @@ namespace NicaWallet.Controllers
             return View();
         }
 
+
         // POST: Records/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RecordId,Amount,Note,PaymentType,RecordDateInsert,AccountId,CurrencyId,CategoryId")] Record record)
+        public ActionResult Create([Bind(Include = "RecordId,Amount,Note,PaymentType,AccountId,CurrencyId,CategoryId")] Record record)
         {
+            record.RecordDate = DateTime.Now;
             var account = db.Account.Find(record.AccountId);
             if (ModelState.IsValid)
             {
@@ -69,11 +56,13 @@ namespace NicaWallet.Controllers
                 {
                     if (record.PaymentType == true)
                     {
-                        account.Amount = account.Amount + record.Amount;
+                        var sum = account.Amount + record.Amount;
+                        account.Amount = Convert.ToDouble(sum);
                     }
                     else
                     {
-                        account.Amount = account.Amount - record.Amount;
+                        var rest = account.Amount - record.Amount;
+                        account.Amount = Convert.ToDouble(rest);
                     }
                     db.Entry(account).State = EntityState.Modified;
                     db.SaveChanges();
@@ -112,7 +101,7 @@ namespace NicaWallet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RecordId,Amount,Note,PaymentType,RecordDateInsert,AccountId,CurrencyId,CategoryId")] Record record)
+        public ActionResult Edit([Bind(Include = "RecordId,Amount,Note,PaymentType,AccountId,CurrencyId,CategoryId")] Record record)
         {
             if (ModelState.IsValid)
             {
@@ -127,30 +116,26 @@ namespace NicaWallet.Controllers
         }
 
         // GET: Records/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? recordId)
         {
-            if (id == null)
+            if (recordId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Record record = db.Record.Find(id);
-            if (record == null)
+
+            Record record = db.Record.Find(recordId);
+
+            if (record != null)
             {
-                return HttpNotFound();
+
+                db.Record.Remove(record);
+                db.SaveChanges();
+                return Json(new { ResponseCode = "200" });
             }
-            return View(record);
+            else
+                return Json(new { ResponseCode = "203" });
         }
 
-        // POST: Records/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Record record = db.Record.Find(id);
-            db.Record.Remove(record);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {
