@@ -1,0 +1,70 @@
+﻿@model IEnumerable<NicaWallet.Models.Record>
+
+@{
+    ViewBag.Title = "Records";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="white-box">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Account.AccountName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Currency.CurrencyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Note)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RecordDateInsert)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Account.AccountName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Currency.CurrencyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Note)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecordDateInsert)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.RecordId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.RecordId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

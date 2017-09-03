@@ -1,5 +1,9 @@
-﻿@{
+﻿@using NicaWallet.Models;
+@{
+
     ViewBag.Title = "DashBoard";
+    ApplicationDbContext dbContext = new ApplicationDbContext();
+    var accountCount = dbContext.Account.Count();
 }
 
 <!--Start row-->
@@ -8,11 +12,11 @@
     <div class="col-md-3 col-sm-6">
         <div class="info-box-main">
             <div class="info-stats">
-                <p>1250</p>
-                <span>Total Sales </span>
+                <p>@accountCount</p>
+                <span>Cuentas</span>
             </div>
             <div class="info-icon text-primary ">
-                <i class="mdi mdi-cart"></i>
+                <i class="icon-calculator"></i>
             </div>
             <div class="info-box-progress">
                 <div class="progress">
@@ -27,11 +31,11 @@
     <div class="col-md-3 col-sm-6">
         <div class="info-box-main">
             <div class="info-stats">
-                <p>2300</p>
-                <span>Daily visitors</span>
+                <p>C$ 2300</p>
+                <span>Balance</span>
             </div>
             <div class="info-icon text-info">
-                <i class="mdi mdi-account-multiple"></i>
+                <i class="icon-equalizer"></i>
             </div>
             <div class="info-box-progress">
                 <div class="progress">
@@ -83,6 +87,36 @@
 
 </div>
 <!--End row-->
+@* Cuentas *@
+<div class="row">
+    @foreach (var item in ViewBag.accounts)
+    {
+        <div class="col-md-4">
+            <div class="white-box" style="border-bottom: 6px solid @item.Color">
+                <h2 class="header-title">@item.AccountName</h2>
+                <div class="">
+                    <div class="inbox-inner">
+                        <a href="#">
+                            <div class="inbox-item">
+                                <div class="inbox-img">
+                                    <img src="assets/images/users/avatar-1.jpg" alt="" />
+                                </div>
+
+                                <div class="inbox-item-info">
+                                    <p class="author">@item.Currency.CurrencyName @item.Amount</p>
+                                    <p class="inbox-message">@item.AccountType.AccountTypeName</p>
+                                    <p class="inbox-date">@item.LastUpdate</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+@* Cuentas *@
 <!--Start row-->
 <div class="row">
     <div class="col-md-6">
@@ -122,352 +156,264 @@
 
 </div>
 <!--End row-->
+@* Transacciones Recientes *@
+<!-- Start inbox widget-->
+<div class="col-md-4">
+    <div class="white-box">
+        <h2 class="header-title">Records Recientes</h2>
+        <div class="inbox-widget inbox-scroll-list">
+
+            @foreach (var item in ViewBag.records)
+            {
+                <div class="inbox-inner">
+                    <a href="#">
+                        <div class="inbox-item">
+                            <div class="inbox-img">
+                                <i class="@(item.PaymentType == true ? "icon-arrow-up-circle green" : " icon-arrow-down-circle red")"></i>
+                            </div>
+
+                            <div class="inbox-item-info">
+                                <p class="author">@item.Category.CategoryName</p>
+                                <p class="inbox-message">@item.Account.AccountName</p>
+                                <p class="inbox-date">@item.RecordDateInsert.ToString("dd/mm/yyyy")</p>
+                                <p class="record-amount">@item.Currency.CurrencyName  @item.Amount</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+<!-- End inbox widget-->
+@* Transacciones recientes *@
 <!--Start row-->
-<div class="row">
+@*<div class="row">
 
-    <!-- Start inbox widget-->
-    <div class="col-md-4">
-        <div class="white-box">
-            <h2 class="header-title">Inbox</h2>
-            <div class="inbox-widget inbox-scroll-list">
 
-                <div class="inbox-inner">
-                    <a href="#">
-                        <div class="inbox-item">
-                            <div class="inbox-img">
-                                <img src="assets/images/users/avatar-1.jpg" alt="" />
-                            </div>
+        <!--Start chat widget-->
+        <div class="col-md-4">
+            <div class="white-box">
+                <h2 class="header-title">Chat</h2>
 
-                            <div class="inbox-item-info">
-                                <p class="author">John Doe</p>
-                                <p class="inbox-message">Lorem Ipsum which looks....</p>
-                                <p class="inbox-date">13:34 PM</p>
+                <div class="chat-widget">
+                    <ul class="chat-scroll-list">
+                        <li class="left">
+                            <img src="assets/images/users/avatar-6.jpg" alt="" />
+                            <div class="chat-info">
+                                <a class="name" href="#">Jone Doe</a>
+                                <span class="datetime">6:12</span>
+                                <span class="message">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </span>
                             </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="inbox-inner">
-                    <a href="#">
-                        <div class="inbox-item">
-                            <div class="inbox-img">
-                                <img src="assets/images/users/avatar-2.jpg" alt="" />
-                            </div>
+                        </li>
 
-                            <div class="inbox-item-info">
-                                <p class="author">John Doe</p>
-                                <p class="inbox-message">Lorem Ipsum which looks....</p>
-                                <p class="inbox-date">13:34 PM</p>
+                        <li class="right">
+                            <img src="assets/images/users/avatar-6.jpg" alt="" />
+                            <div class="chat-info">
+                                <a class="name" href="#">Jone Doe</a>
+                                <span class="datetime">6:12</span>
+                                <span class="message">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </span>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </li>
 
-                <div class="inbox-inner">
-                    <a href="#">
-                        <div class="inbox-item">
-                            <div class="inbox-img">
-                                <img src="assets/images/users/avatar-3.jpg" alt="" />
+                        <li class="left">
+                            <img src="assets/images/users/avatar-6.jpg" alt="" />
+                            <div class="chat-info">
+                                <a class="name" href="#">Jone Doe</a>
+                                <span class="datetime">6:12</span>
+                                <span class="message">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </span>
                             </div>
+                        </li>
 
-                            <div class="inbox-item-info">
-                                <p class="author">John Doe</p>
-                                <p class="inbox-message">Lorem Ipsum which looks....</p>
-                                <p class="inbox-date">13:34 PM</p>
+                        <li class="right">
+                            <img src="assets/images/users/avatar-6.jpg" alt="" />
+                            <div class="chat-info">
+                                <a class="name" href="#">Jone Doe</a>
+                                <span class="datetime">6:12</span>
+                                <span class="message">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit
+                                </span>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </li>
 
-                <div class="inbox-inner">
-                    <a href="#">
-                        <div class="inbox-item">
-                            <div class="inbox-img">
-                                <img src="assets/images/users/avatar-4.jpg" alt="" />
-                            </div>
-
-                            <div class="inbox-item-info">
-                                <p class="author">John Doe</p>
-                                <p class="inbox-message">Lorem Ipsum which looks....</p>
-                                <p class="inbox-date">13:34 PM</p>
-                            </div>
-                        </div>
-                    </a>
+                    </ul>
                 </div>
 
-                <div class="inbox-inner">
-                    <a href="#">
-                        <div class="inbox-item">
-                            <div class="inbox-img">
-                                <img src="assets/images/users/avatar-5.jpg" alt="" />
-                            </div>
-
-                            <div class="inbox-item-info">
-                                <p class="author">John Doe</p>
-                                <p class="inbox-message">Lorem Ipsum which looks....</p>
-                                <p class="inbox-date">13:34 PM</p>
-                            </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Say something" type="text">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">Send</button>
+                            </span>
                         </div>
-                    </a>
+                    </div>
                 </div>
-
-                <div class="inbox-inner">
-                    <a href="#">
-                        <div class="inbox-item">
-                            <div class="inbox-img">
-                                <img src="assets/images/users/avatar-6.jpg" alt="" />
-                            </div>
-
-                            <div class="inbox-item-info">
-                                <p class="author">John Doe</p>
-                                <p class="inbox-message">Lorem Ipsum which looks....</p>
-                                <p class="inbox-date">13:34 PM</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="inbox-inner">
-                    <a href="#">
-                        <div class="inbox-item">
-                            <div class="inbox-img">
-                                <img src="assets/images/users/avatar-3.jpg" alt="" />
-                            </div>
-
-                            <div class="inbox-item-info">
-                                <p class="author">John Doe</p>
-                                <p class="inbox-message">Lorem Ipsum which looks....</p>
-                                <p class="inbox-date">13:34 PM</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
 
             </div>
         </div>
-    </div>
-    <!-- End inbox widget-->
-    <!--Start chat widget-->
-    <div class="col-md-4">
-        <div class="white-box">
-            <h2 class="header-title">Chat</h2>
-
-            <div class="chat-widget">
-                <ul class="chat-scroll-list">
-                    <li class="left">
-                        <img src="assets/images/users/avatar-6.jpg" alt="" />
-                        <div class="chat-info">
-                            <a class="name" href="#">Jone Doe</a>
-                            <span class="datetime">6:12</span>
-                            <span class="message">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                            </span>
-                        </div>
+        <!--End chat widget-->
+        <!-- Start timeline-->
+        <div class="col-md-4">
+            <div class="white-box">
+                <h2 class="header-title">Latest Activity</h2>
+                <ul class="timeline timeline-compact">
+                    <li class="latest">
+                        <div class="timeline-date">Just Now</div>
+                        <div class="timeline-title">Create New Page</div>
+                        <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
                     </li>
 
-                    <li class="right">
-                        <img src="assets/images/users/avatar-6.jpg" alt="" />
-                        <div class="chat-info">
-                            <a class="name" href="#">Jone Doe</a>
-                            <span class="datetime">6:12</span>
-                            <span class="message">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                            </span>
-                        </div>
+                    <li>
+                        <div class="timeline-date">Just Now</div>
+                        <div class="timeline-title">Back Up Theme</div>
+                        <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
                     </li>
 
-                    <li class="left">
-                        <img src="assets/images/users/avatar-6.jpg" alt="" />
-                        <div class="chat-info">
-                            <a class="name" href="#">Jone Doe</a>
-                            <span class="datetime">6:12</span>
-                            <span class="message">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                            </span>
-                        </div>
+                    <li>
+                        <div class="timeline-date">Just Now</div>
+                        <div class="timeline-title">Changes In The Structure</div>
+                        <div class="timeline-description">Lorem Ipsum generators on the tend to repeat. </div>
                     </li>
 
-                    <li class="right">
-                        <img src="assets/images/users/avatar-6.jpg" alt="" />
-                        <div class="chat-info">
-                            <a class="name" href="#">Jone Doe</a>
-                            <span class="datetime">6:12</span>
-                            <span class="message">
-                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit
-                            </span>
-                        </div>
+                    <li>
+                        <div class="timeline-date">Just Now</div>
+                        <div class="timeline-title">New user register</div>
+                        <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
                     </li>
 
                 </ul>
             </div>
-
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="input-group">
-                        <input class="form-control" placeholder="Say something" type="text">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="button">Send</button>
-                        </span>
-                    </div>
+        </div>
+        <!-- End timeline-->
+        <!-- Start inbox widget-->
+        <div class="col-md-12">
+            <div class="white-box">
+                <h2 class="header-title"> Projects </h2>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Project Name</th>
+                                <th>Start Date</th>
+                                <th>Deadline Date</th>
+                                <th>Status</th>
+                                <th>Progress</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Design new theme</td>
+                                <td>10/10/2016</td>
+                                <td>12/11/2016</td>
+                                <td><span class="label label-warning">Pending</span></td>
+                                <td>
+                                    <div class="progress progress-striped progress-sm">
+                                        <div class="progress-bar progress-bar-warning" style="width: 25%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Website Redesign</td>
+                                <td>10/10/2016</td>
+                                <td>12/11/2016</td>
+                                <td><span class="label label-success">In Progress</span></td>
+                                <td>
+                                    <div class="progress progress-striped progress-sm">
+                                        <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Mockup Design</td>
+                                <td>10/10/2016</td>
+                                <td>12/11/2016</td>
+                                <td><span class="label label-warning">Pending</span></td>
+                                <td>
+                                    <div class="progress progress-striped progress-sm">
+                                        <div class="progress-bar progress-bar-primary" style="width: 25%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Admin Panel design</td>
+                                <td>10/10/2016</td>
+                                <td>12/11/2016</td>
+                                <td><span class="label label-success">In Progress</span></td>
+                                <td>
+                                    <div class="progress progress-striped progress-sm">
+                                        <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Front End Design</td>
+                                <td>10/10/2016</td>
+                                <td>12/11/2016</td>
+                                <td><span class="label label-danger">On Hold</span></td>
+                                <td>
+                                    <div class="progress progress-striped progress-sm">
+                                        <div class="progress-bar progress-bar-danger" style="width: 25%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Software Testing</td>
+                                <td>10/10/2016</td>
+                                <td>12/11/2016</td>
+                                <td><span class="label label-success">In Progress</span></td>
+                                <td>
+                                    <div class="progress progress-striped progress-sm">
+                                        <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Admin Panel design</td>
+                                <td>10/10/2016</td>
+                                <td>12/11/2016</td>
+                                <td><span class="label label-danger">On Hold</span></td>
+                                <td>
+                                    <div class="progress progress-striped progress-sm">
+                                        <div class="progress-bar progress-bar-danger" style="width: 25%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Website Redesign</td>
+                                <td>10/10/2016</td>
+                                <td>12/11/2016</td>
+                                <td><span class="label label-warning">Pending</span></td>
+                                <td>
+                                    <div class="progress progress-striped progress-sm">
+                                        <div class="progress-bar progress-bar-warning" style="width: 25%;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </div>
-
         </div>
-    </div>
-    <!--End chat widget-->
-    <!-- Start timeline-->
-    <div class="col-md-4">
-        <div class="white-box">
-            <h2 class="header-title">Latest Activity</h2>
-            <ul class="timeline timeline-compact">
-                <li class="latest">
-                    <div class="timeline-date">Just Now</div>
-                    <div class="timeline-title">Create New Page</div>
-                    <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
-                </li>
-
-                <li>
-                    <div class="timeline-date">Just Now</div>
-                    <div class="timeline-title">Back Up Theme</div>
-                    <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
-                </li>
-
-                <li>
-                    <div class="timeline-date">Just Now</div>
-                    <div class="timeline-title">Changes In The Structure</div>
-                    <div class="timeline-description">Lorem Ipsum generators on the tend to repeat. </div>
-                </li>
-
-                <li>
-                    <div class="timeline-date">Just Now</div>
-                    <div class="timeline-title">New user register</div>
-                    <div class="timeline-description">Lorem Ipsum generators on the tend to repeat.</div>
-                </li>
-
-            </ul>
-        </div>
-    </div>
-    <!-- End timeline-->
-    <!-- Start inbox widget-->
-    <div class="col-md-12">
-        <div class="white-box">
-            <h2 class="header-title"> Projects </h2>
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Project Name</th>
-                            <th>Start Date</th>
-                            <th>Deadline Date</th>
-                            <th>Status</th>
-                            <th>Progress</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Design new theme</td>
-                            <td>10/10/2016</td>
-                            <td>12/11/2016</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            <td>
-                                <div class="progress progress-striped progress-sm">
-                                    <div class="progress-bar progress-bar-warning" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Website Redesign</td>
-                            <td>10/10/2016</td>
-                            <td>12/11/2016</td>
-                            <td><span class="label label-success">In Progress</span></td>
-                            <td>
-                                <div class="progress progress-striped progress-sm">
-                                    <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Mockup Design</td>
-                            <td>10/10/2016</td>
-                            <td>12/11/2016</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            <td>
-                                <div class="progress progress-striped progress-sm">
-                                    <div class="progress-bar progress-bar-primary" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Admin Panel design</td>
-                            <td>10/10/2016</td>
-                            <td>12/11/2016</td>
-                            <td><span class="label label-success">In Progress</span></td>
-                            <td>
-                                <div class="progress progress-striped progress-sm">
-                                    <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Front End Design</td>
-                            <td>10/10/2016</td>
-                            <td>12/11/2016</td>
-                            <td><span class="label label-danger">On Hold</span></td>
-                            <td>
-                                <div class="progress progress-striped progress-sm">
-                                    <div class="progress-bar progress-bar-danger" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Software Testing</td>
-                            <td>10/10/2016</td>
-                            <td>12/11/2016</td>
-                            <td><span class="label label-success">In Progress</span></td>
-                            <td>
-                                <div class="progress progress-striped progress-sm">
-                                    <div class="progress-bar progress-bar-success" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Admin Panel design</td>
-                            <td>10/10/2016</td>
-                            <td>12/11/2016</td>
-                            <td><span class="label label-danger">On Hold</span></td>
-                            <td>
-                                <div class="progress progress-striped progress-sm">
-                                    <div class="progress-bar progress-bar-danger" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>Website Redesign</td>
-                            <td>10/10/2016</td>
-                            <td>12/11/2016</td>
-                            <td><span class="label label-warning">Pending</span></td>
-                            <td>
-                                <div class="progress progress-striped progress-sm">
-                                    <div class="progress-bar progress-bar-warning" style="width: 25%;"></div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
-    </div>
-    <!-- Start inbox widget-->
-</div>
+        <!-- Start inbox widget-->
+    </div>*@
 <!--End row-->
 
 @section scripts{

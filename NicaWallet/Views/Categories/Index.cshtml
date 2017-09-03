@@ -19,7 +19,7 @@
             <div class="item">
                 <div class="column-icon">
                     <div class="circle " style="background-color: rgb(244, 67, 54);">
-                        <span class="category-icon category-icon-restaurant-filled"></span>
+                        <span class="category-icon @item.CategoryIcon"></span>
                     </div>
                 </div><div class="column-category">
                     <div class="category-name">@Html.DisplayFor(modelItem => item.CategoryName)</div>
@@ -70,7 +70,7 @@
 </div>
 
 <!-- Modal Create Category -->
-@using (Html.BeginForm("CreateCategory", "admin", FormMethod.Post))
+@using (Html.BeginForm("CreateCategory", "Categories", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
@@ -103,7 +103,7 @@
         //Delete Category
         $('.btnDelete').click(function () {
             var categoryId = $(this).attr('categoryId');
-            var url = "/admin/DeleteCategory";
+            var url = "/Categories/DeleteCategory";
             swal({
                 title: "Alerta",
                 text: "Estas seguro que quieres eliminar esta categoria?",
@@ -144,7 +144,7 @@
         //Update Category
         $('.btnUpdate').click(function () {
             var categoryId = $(this).attr('categoryId');
-            var url = "/admin/UpdateCategory";
+            var url = "/Categories/UpdateCategory";
             $.ajax({
                 url: url,
                 data: { 'categoryId': categoryId },

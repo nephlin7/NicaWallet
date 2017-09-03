@@ -7,9 +7,17 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li style="display:flex;align-items:center;">
-                 <a href="/Manage"><i class="icon-settings"></i> Manage Account</a>
+                <a href="#" data-toggle="dropdown" aria-expanded="false">
+                    <i class="icon-user"></i>
+                    @User.Identity.GetUserName()
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                    <li> <a href="/Manage"><i class="icon-settings"></i> Manage Account</a> </li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="icon-logout"></i> Cerrar sesión</a></li>
+                </ul>
             </li>
-            <li><a href="javascript:document.getElementById('logoutForm').submit()"><i class="icon-logout"></i> Cerrar sesión</a></li>
+            
         </ul>
     }
 }

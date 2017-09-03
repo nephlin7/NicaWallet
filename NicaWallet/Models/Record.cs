@@ -14,7 +14,7 @@ namespace NicaWallet.Models
         public double Amount { get; set; }
         public string Note { get; set; }
         public bool? PaymentType { get; set; }
-
+        public DateTime RecordDateInsert { get; set; }
 
         #region FOREINGKEYS
         [Display(Name = "Account")]

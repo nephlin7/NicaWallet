@@ -1,5 +1,6 @@
 namespace NicaWallet.Migrations
 {
+    using NicaWallet.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -19,13 +20,27 @@ namespace NicaWallet.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            //context.Category.AddOrUpdate(
+            //  p => p.CategoryId,
+            //  new Category { CategoryName = "Comidas y Bebidas", IsParent=true, CategoryIcon = "category-icon-restaurant-filled" },
+            //  new Category { CategoryName = "Compras", IsParent = true, CategoryIcon = "category-icon-shopping-bag-filled" },
+            //  new Category { CategoryName = "Viajes", IsParent = true, CategoryIcon = "category-icon-car-filled" },
+            //  new Category { CategoryName = "Automovil", IsParent = true, CategoryIcon = "category-icon-airplane-mode-on-filled" },
+            //  new Category { CategoryName = "Vida & Entretenimiento", IsParent = true, CategoryIcon = "category-icon-man-filled" },
+            //  new Category { CategoryName = "Finanzas", IsParent = true, CategoryIcon = "category-icon-billing-filled" },
+            //  new Category { CategoryName = "Ingresos", IsParent = true, CategoryIcon = "category-icon-coins-filled" },
+            //  new Category { CategoryName = "Otros", IsParent = true, CategoryIcon = "category-icon-menu-filled" }
+            //);
+         //   context.AccountType.AddOrUpdate(
+         //       p => p.AccountTypeId,
+         //       new AccountType { AccountTypeName = "Corriente" },
+         //       new AccountType { AccountTypeName = "Ahorro" }
+         //   );
+         //   context.Currency.AddOrUpdate(
+         //    p => p.CurrencyId,
+         //    new Currency { CurrencyName = "C$", IsBaseCurrency=true},
+         //    new Currency { CurrencyName = "$",IsBaseCurrency=false }
+         //);
         }
     }
 }

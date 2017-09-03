@@ -173,6 +173,7 @@
     <Compile Include="Controllers\CuentaController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RecordsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +192,22 @@
     <Compile Include="Migrations\201708271744166_Update amount field Account model.cs" />
     <Compile Include="Migrations\201708271744166_Update amount field Account model.Designer.cs">
       <DependentUpon>201708271744166_Update amount field Account model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709021936048_add-Categroy-icon.cs" />
+    <Compile Include="Migrations\201709021936048_add-Categroy-icon.Designer.cs">
+      <DependentUpon>201709021936048_add-Categroy-icon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709021951361_populate-categories.cs" />
+    <Compile Include="Migrations\201709021951361_populate-categories.Designer.cs">
+      <DependentUpon>201709021951361_populate-categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709022046373_populate-accountype-and-currency.cs" />
+    <Compile Include="Migrations\201709022046373_populate-accountype-and-currency.Designer.cs">
+      <DependentUpon>201709022046373_populate-accountype-and-currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709022338347_add-icon-account-dateInsert-record.cs" />
+    <Compile Include="Migrations\201709022338347_add-icon-account-dateInsert-record.Designer.cs">
+      <DependentUpon>201709022338347_add-icon-account-dateInsert-record.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
@@ -406,6 +423,9 @@
     <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\fonts\glyphicons-halflings-regulard41dd41d.eot" />
+    <Content Include="assets\css\302ecceb6692fd145c0e64137694198b.woff" />
+    <Content Include="assets\css\591997b6e6038a335c5f0cd3925e595e.eot" />
+    <Content Include="assets\css\f34667558dd9c79386aa74f0680d9817.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -414,6 +434,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ModalForm.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -459,6 +480,11 @@
     <Content Include="Views\Cuenta\Details.cshtml" />
     <Content Include="Views\Cuenta\Edit.cshtml" />
     <Content Include="Views\Cuenta\Index.cshtml" />
+    <Content Include="Views\Records\Create.cshtml" />
+    <Content Include="Views\Records\Delete.cshtml" />
+    <Content Include="Views\Records\Details.cshtml" />
+    <Content Include="Views\Records\Edit.cshtml" />
+    <Content Include="Views\Records\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -483,6 +509,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708271744166_Update amount field Account model.resx">
       <DependentUpon>201708271744166_Update amount field Account model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709021936048_add-Categroy-icon.resx">
+      <DependentUpon>201709021936048_add-Categroy-icon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709021951361_populate-categories.resx">
+      <DependentUpon>201709021951361_populate-categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709022046373_populate-accountype-and-currency.resx">
+      <DependentUpon>201709022046373_populate-accountype-and-currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709022338347_add-icon-account-dateInsert-record.resx">
+      <DependentUpon>201709022338347_add-icon-account-dateInsert-record.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

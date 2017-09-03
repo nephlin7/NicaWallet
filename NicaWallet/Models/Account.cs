@@ -19,7 +19,7 @@ namespace NicaWallet.Models
         public bool? IsActive { get; set; }
         public string UserId { get; set; }
         public string Color { get; set; }
-
+        public string AccountIcon { get; set; }
         #region FOREINGKEYS
         [Display(Name = "Currency")]
         public int? CurrencyId { get; set; }

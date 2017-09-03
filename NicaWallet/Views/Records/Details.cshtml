@@ -1,0 +1,75 @@
+﻿@model NicaWallet.Models.Record
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Record</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Account.AccountName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Account.AccountName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Currency.CurrencyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Currency.CurrencyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordDateInsert)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecordDateInsert)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RecordId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
