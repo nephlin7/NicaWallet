@@ -31,16 +31,17 @@ namespace NicaWallet.Migrations
             //  new Category { CategoryName = "Ingresos", IsParent = true, CategoryIcon = "category-icon-coins-filled" },
             //  new Category { CategoryName = "Otros", IsParent = true, CategoryIcon = "category-icon-menu-filled" }
             //);
-         //   context.AccountType.AddOrUpdate(
-         //       p => p.AccountTypeId,
-         //       new AccountType { AccountTypeName = "Corriente" },
-         //       new AccountType { AccountTypeName = "Ahorro" }
-         //   );
-         //   context.Currency.AddOrUpdate(
-         //    p => p.CurrencyId,
-         //    new Currency { CurrencyName = "C$", IsBaseCurrency=true},
-         //    new Currency { CurrencyName = "$",IsBaseCurrency=false }
-         //);
+            //   context.AccountType.AddOrUpdate(
+            //       p => p.AccountTypeId,
+            //       new AccountType { AccountTypeName = "Corriente" },
+            //       new AccountType { AccountTypeName = "Ahorro" }
+            //   );
+            //   context.Currency.AddOrUpdate(
+            //    p => p.CurrencyId,
+            //    new Currency { CurrencyName = "C$", IsBaseCurrency=true},
+            //    new Currency { CurrencyName = "$",IsBaseCurrency=false }
+            //);
+
         }
     }
 }

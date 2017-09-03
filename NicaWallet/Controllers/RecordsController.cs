@@ -29,6 +29,15 @@ namespace NicaWallet.Controllers
             return View(record);
         }
 
+        // GET: Records/Create
+        public ActionResult Create()
+        {
+            ViewBag.AccountId = new SelectList(db.Account, "AccountId", "AccountName");
+            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "CategoryName");
+            ViewBag.CurrencyId = new SelectList(db.Currency, "CurrencyId", "CurrencyName");
+            return View();
+        }
+
 
         // POST: Records/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -37,7 +46,7 @@ namespace NicaWallet.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "RecordId,Amount,Note,PaymentType,AccountId,CurrencyId,CategoryId")] Record record)
         {
-            record.RecordDateInsert = DateTime.Now;
+            record.RecordDate = DateTime.Now;
             var account = db.Account.Find(record.AccountId);
             if (ModelState.IsValid)
             {
@@ -47,11 +56,13 @@ namespace NicaWallet.Controllers
                 {
                     if (record.PaymentType == true)
                     {
-                        account.Amount = account.Amount + record.Amount;
+                        var sum = account.Amount + record.Amount;
+                        account.Amount = Convert.ToDouble(sum);
                     }
                     else
                     {
-                        account.Amount = account.Amount - record.Amount;
+                        var rest = account.Amount - record.Amount;
+                        account.Amount = Convert.ToDouble(rest);
                     }
                     db.Entry(account).State = EntityState.Modified;
                     db.SaveChanges();
@@ -90,7 +101,7 @@ namespace NicaWallet.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RecordId,Amount,Note,PaymentType,RecordDateInsert,AccountId,CurrencyId,CategoryId")] Record record)
+        public ActionResult Edit([Bind(Include = "RecordId,Amount,Note,PaymentType,AccountId,CurrencyId,CategoryId")] Record record)
         {
             if (ModelState.IsValid)
             {
@@ -105,30 +116,26 @@ namespace NicaWallet.Controllers
         }
 
         // GET: Records/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? recordId)
         {
-            if (id == null)
+            if (recordId == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Record record = db.Record.Find(id);
-            if (record == null)
+
+            Record record = db.Record.Find(recordId);
+
+            if (record != null)
             {
-                return HttpNotFound();
+
+                db.Record.Remove(record);
+                db.SaveChanges();
+                return Json(new { ResponseCode = "200" });
             }
-            return View(record);
+            else
+                return Json(new { ResponseCode = "203" });
         }
 
-        // POST: Records/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Record record = db.Record.Find(id);
-            db.Record.Remove(record);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         protected override void Dispose(bool disposing)
         {

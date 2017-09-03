@@ -181,7 +181,7 @@
                             <div class="inbox-item-info">
                                 <p class="author">@item.Category.CategoryName</p>
                                 <p class="inbox-message">@item.Account.AccountName</p>
-                                <p class="inbox-date">@item.RecordDateInsert.ToShortDateString()</p>
+                                <p class="inbox-date">@item.RecordDate.ToShortDateString()</p>
                                 <p class="record-amount">@(item.PaymentType == true ? "+" : "-") @item.Currency.CurrencyName  @item.Amount</p>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                     <div>
                       - @item.Currency.CurrencyName @item.Amount
                         <br />
-                        @item.RecordDateInsert.ToShortDateString()
+                        @item.RecordDate.ToShortDateString()
                     </div>
                 </li>
             }

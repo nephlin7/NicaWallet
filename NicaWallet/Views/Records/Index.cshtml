@@ -64,8 +64,8 @@
                     <i style="font-size:22px;" class="@(item.PaymentType == true ? "icon-arrow-up-circle green" : " icon-arrow-down-circle red")"></i>
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.RecordId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.RecordId })
+                    <a href="/Records/Edit/@item.RecordId" data-toggle="tooltip" title="Editar" RecordId="@item.RecordId" class="btnUpdate btn btn-info outline-btn round"><i class="icon-note" aria-hidden="true"></i></a>
+                    <button data-toggle="tooltip" title="Eliminar" type="button" class="btn btn-danger outline-btn round btnDelete" RecordId="@item.RecordId"> <i class="icon-trash" aria-hidden="true"></i></button>
                 </td>
             </tr>
         }
@@ -79,6 +79,45 @@
     <script>
         $(document).ready(function () {
             $('.table').DataTable();
+        });
+        //Delete Category
+        $('.btnDelete').click(function () {
+            var recordId = $(this).attr('RecordId');
+            var url = "/Records/Delete";
+            swal({
+                title: "Alerta",
+                text: "Estas seguro que quieres eliminar este registro?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel plx!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            url: url,
+                            data: { 'recordId': recordId },
+                            type: "post",
+                            cache: false
+                        }).success(function (response) {
+                            if (response.ResponseCode == "200") {
+                                swal("Buen trabajo!", "Se elimino correctamente!", "success");
+                                $('.confirm ').click(function () {
+                                    location.reload(); 
+                                });
+                            }
+                        }).error(function (error) {
+                            swal("Aviso!", "Ah ocurrido un error, Intentelo de nuevo", "error");
+                        });
+                        return true;
+                    } else {
+                        swal("Cancelled", "Tus datos estan a salvo :)", "error");
+                    }
+                });
+
         });
     </script>
 }

@@ -217,6 +217,14 @@
     <Compile Include="Migrations\201709030950231_remove-account-icon-add-to-Account-type.Designer.cs">
       <DependentUpon>201709030950231_remove-account-icon-add-to-Account-type.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709031157383_change-name-RecordDateInsert-to-RecorDate.cs" />
+    <Compile Include="Migrations\201709031157383_change-name-RecordDateInsert-to-RecorDate.Designer.cs">
+      <DependentUpon>201709031157383_change-name-RecordDateInsert-to-RecorDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201709031215381_record-amount-to-null.cs" />
+    <Compile Include="Migrations\201709031215381_record-amount-to-null.Designer.cs">
+      <DependentUpon>201709031215381_record-amount-to-null.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountType.cs" />
@@ -535,6 +543,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709030950231_remove-account-icon-add-to-Account-type.resx">
       <DependentUpon>201709030950231_remove-account-icon-add-to-Account-type.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709031157383_change-name-RecordDateInsert-to-RecorDate.resx">
+      <DependentUpon>201709031157383_change-name-RecordDateInsert-to-RecorDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709031215381_record-amount-to-null.resx">
+      <DependentUpon>201709031215381_record-amount-to-null.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

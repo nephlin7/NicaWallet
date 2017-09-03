@@ -12,13 +12,14 @@ namespace NicaWallet.Models
     {
         public int RecordId { get; set; }
         [Display(Name = "Monto")]
-        public double Amount { get; set; }
+        public double? Amount { get; set; }
         [Display(Name = "Notas")]
         public string Note { get; set; }
         [Display(Name = "Es un ingreso?")]
         public bool PaymentType { get; set; }
 
-        public DateTime RecordDateInsert { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime RecordDate { get; set; }
 
         #region FOREINGKEYS
         [Display(Name = "Tipo de cuenta")]
